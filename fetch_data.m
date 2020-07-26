@@ -37,12 +37,38 @@ function [data]=fetch_data(ticker, startdate, enddate, freq)
     
     [response, ~, ~]  = requestObj.send(uri, options);
     if(~strcmp(response.StatusCode, 'OK'))
-        disp('No data available');
+        disp('Response was not with OK status :(');
         data = [];
     else
-        data = response.Body.Data;
+        data = data_string_to_table(response.Body.Data);
     end
 end
+
+%Convert data string to table
+%Input: dataString -- response string from provider, 
+%       first column is considered as date
+function [dtable]=data_string_to_table(dataString)
+    %splitting response string by lines and comma-separators
+    dataString=splitlines(dataString);
+    dataString=split(dataString, ',');
+    
+    %extracting variable names
+    variableNames=dataString(1,:);
+    dataString(1,:)=[];
+    dtable=table(dataString(:,1), dataString(:,2), dataString(:,3), dataString(:,4),...
+        dataString(:,5), dataString(:,6), dataString(:,7), 'VariableNames', variableNames);
+    
+    %Converting columns from strings to datetime and numbers accordingly
+    %Convert first column (Date) to datetime
+    dtable.(variableNames(1)) = datetime(dtable.(variableNames(1)));
+    
+    %Convert other columns to numbers
+    for i=2:7
+        dtable.(variableNames(i)) = str2double(dtable.(variableNames(i)));
+    end
+    
+end
+
 
 
 
