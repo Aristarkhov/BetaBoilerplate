@@ -1,8 +1,12 @@
 %fetching financial data from the internet
 
-src_fred = fred('https://research.stlouisfed.org/fred2/');
+function [data]=fetch_data
+    C=ConnectionProperties;
+    src_fred = fred(C.inet_addr);
+    data = fetch(src_fred, 'SP500');
+    close(src_fred);   
+end
 
-sp500 = fetch(src_fred, 'SP500');
 
-close(src_fred);
+
 
