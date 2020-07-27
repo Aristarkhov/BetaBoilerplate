@@ -2,23 +2,23 @@
 %Input:  dataMap   - data map, where ticker symbol is the key and ticker
 %                    quotes table is the value
 %        priceType - type of price taken into account ("Open", "High", "Low", "Close", "Adj Close")    
-function [timeSeriesCollection] = extractTimeSeriesFromDataMap(dataMap, priceType)
+function [timeTable] = extractTimeSeriesFromDataMap(dataMap, priceType)
     arguments
         dataMap   containers.Map
         priceType string
     end
     
-    timeSeriesCollection=tscollection;
+    timeTable=timetable;
     
     for key = dataMap.keys
         ckey=char(key);
         
-        ts=timeseries(dataMap(ckey).(priceType), datestr(dataMap(ckey).Date), 'Name', ckey);
-        
-        if (isempty(timeSeriesCollection))    
-            timeSeriesCollection=tscollection(ts);
-        else
-            timeSeriesCollection=addts(timeSeriesCollection, ts);
+        if (isempty(timeTable))
+            timeTable = timetable(dataMap(ckey).Date);
         end
+        
+        timeTable = addvars(timeTable, ...
+                            dataMap(ckey).(priceType), ...
+                            'NewVariableNames', ckey);        
     end
 end
