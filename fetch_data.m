@@ -25,6 +25,7 @@ function [data]=fetch_data(ticker, startdate, enddate, freq)
        requestObj = requestObj.addFields(matlab.net.http.field.GenericField('User-Agent', C.user_agent));
     else
         disp('Error retrieving data. Please check ticker symbol and/or connection parameters.');
+        fprintf('Symbol: %s \n', ticker);
         data = [];
         return;
     end
@@ -38,7 +39,7 @@ function [data]=fetch_data(ticker, startdate, enddate, freq)
     
     [response, ~, ~]  = requestObj.send(uri, options);
     if(~strcmp(response.StatusCode, 'OK'))
-        disp('Response was not with OK status :(');
+        fprintf('REST: Response was not with OK status for symbol: %s \n', ticker);
         data = [];
     else
         data = data_string_to_table(response.Body.Data);
