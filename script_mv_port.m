@@ -11,7 +11,7 @@ returns = tick2ret(tt.Variables);
 retMean = mean(returns);
 retCov  = cov(returns);
 
-p = Portfolio('AssetMean', retMean, 'AssetCovar', retCov, 'AssetList', symbols);
+p = Portfolio('AssetMean', retMean, 'AssetCovar', retCov, 'AssetList', tt.Properties.VariableNames);
 p = setDefaultConstraints(p);
 
 frt = estimateFrontier(p, 7);
