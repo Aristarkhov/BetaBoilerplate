@@ -1,5 +1,14 @@
-
+%Desctiption: Fetch data and map result by tickers
+%Input:       tickersList -- tickers (symbols) list
+%             startDate   -- starting date
+%             endDate     -- end date
 function [dataMap]=fetch_data_mapped_by_tickers(tickersList, startDate, endDate)
+    arguments
+    tickersList 
+    startDate datetime
+    endDate datetime
+    end
+
     dataMap=containers.Map;
    
     w=waitbar(0, "", 'Name' , 'Fetching aggregate data, please wait');

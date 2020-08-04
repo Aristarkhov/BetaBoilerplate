@@ -1,3 +1,4 @@
+%Description: class storing connection provider settings and properties
 classdef ConnectionProperties
     properties (Constant)
         url_cookies = 'https://finance.yahoo.com/quote/'

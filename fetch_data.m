@@ -1,7 +1,16 @@
-%fetching financial data from the internet
-
+%Description: fetch financial data from the internet
+%Input: ticker    -- (symbol) name as string,
+%       startdate -- starting date
+%       enddate   -- end date
+%       freq      -- desired frequency in Yahoo REST API required format
+%                    ('1d', '5d', '1wk', '1mo', '3mo')
 function [data]=fetch_data(ticker, startdate, enddate, freq)
-    
+    arguments
+        ticker char
+        startdate datetime
+        enddate datetime
+        freq {mustBeMember(freq,['1d', '5d', '1wk', '1mo', '3mo'])}
+    end
     C=ConnectionProperties;
     uri_to_get_cookies = matlab.net.URI([C.url_cookies, upper(ticker), '/history'],...
         'period1',  num2str(uint64(posixtime(datetime()-1)), '%.10g'),...
@@ -46,9 +55,9 @@ function [data]=fetch_data(ticker, startdate, enddate, freq)
     end
 end
 
-%Convert data string to table
+%Description: Convert response data string to table
 %Input: dataString -- response string from provider, 
-%       first column is considered as date
+%first column is considered as date
 function [dtable]=data_string_to_table(dataString)
     %splitting response string by lines and comma-separators
     dataString=splitlines(dataString);

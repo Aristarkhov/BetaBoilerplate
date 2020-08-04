@@ -1,4 +1,4 @@
-%Convert data map to timeseries collection object using specified parameter
+%Convert data map to timeseries collection object using specified type of quote
 %Input:  dataMap   - data map, where ticker symbol is the key and ticker
 %                    quotes table is the value
 %        priceType - type of price taken into account ("Open", "High", "Low", "Close", "Adj Close")    
