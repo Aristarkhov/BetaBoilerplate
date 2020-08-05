@@ -8,7 +8,11 @@ Real-time data retrieving from Yahoo.Finance through REST API
 1. Execute `git clone https://github.com/Aristarkhov/BetaBoilerplate.git`
 inside desired directory
 
-2. Execute `main.m` script
+2. Execute `main.m` script:
+
+```>> main```
+
+![Possible result screen](https://github.com/Aristarkhov/BetaBoilerplate/blob/master/result.png?raw=true)
 
 ## Description
 
