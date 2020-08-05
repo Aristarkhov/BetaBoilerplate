@@ -3,6 +3,8 @@
 Example of smart beta modeling and portfolio optimization using PCA in MATLAB.  
 Real-time data retrieving from Yahoo.Finance through REST API
 
+**Disclaimer.** This project is made for interview for Sc. Beta and does not contain any sensitive/valuable information nor suggests any production solutions.  
+
 Created in MATLAB Version R2020a.
 
 ## Running
@@ -18,8 +20,8 @@ inside desired directory
 
 ## Description
 
-Using S&P500 index as a benchmark, `main.m` script loads symbol data from World Wide Web for given dates and symbols contained in file `symbols.mat`, then outputs correlation   matrix and performs mean-variance Portfolio optimization, outputting   risk-return map and efficient frontier.<br>  
-Then Principal Component Analysis is performed to find the optimal   portfolio at a given risk level by explicitly setting and solving  corresponding optimization problem.   
+Using S&P500 index as a benchmark, `main.m` script loads symbol data from World Wide Web for given dates and symbols contained in file `symbols.mat`, then calculates and outputs correlation  matrix and performs mean-variance Portfolio optimization, outputting   risk-return map and efficient frontier.<br>  
+After that Principal Component Analysis is performed to find the optimal   portfolio at a given risk level by explicitly setting and solving  corresponding optimization problem.   
 
 ## Limitations
 
