@@ -3,6 +3,8 @@
 Example of smart beta modeling and portfolio optimization using PCA in MATLAB.  
 Real-time data retrieving from Yahoo.Finance through REST API
 
+Created in MATLAB Version R2020a.
+
 ## Running
 
 1. Execute `git clone https://github.com/Aristarkhov/BetaBoilerplate.git`
