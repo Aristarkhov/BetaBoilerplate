@@ -12,5 +12,9 @@ inside desired directory
 
 ## Description
 
-`main.m` script loads symbol data from World Wide Web for given dates and symbols contained in file `symbols.mat`, then outputs correlation   matrix and performs mean-variance Portfolio optimization, outputting   risk-return map and efficient frontier for downloaded asset data and   timeframe.<br>  
-Then Principal Component Analysis is performed to find the optimal   portfolio at a given risk level by explicitly setting and solving the   optimization problem.  
+Using S&P500 index as a benchmark, `main.m` script loads symbol data from World Wide Web for given dates and symbols contained in file `symbols.mat`, then outputs correlation   matrix and performs mean-variance Portfolio optimization, outputting   risk-return map and efficient frontier.<br>  
+Then Principal Component Analysis is performed to find the optimal   portfolio at a given risk level by explicitly setting and solving  corresponding optimization problem.   
+
+## Limitations
+
+Number of symbols being analysed is a smaller subset of S&P500 index constituents due to the fact that Yahoo.Finance had removed their public API for dataset retrieving, thus blocking any repeated connections for those who do not have API key.

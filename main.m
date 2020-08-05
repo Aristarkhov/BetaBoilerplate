@@ -31,7 +31,7 @@ benchReturns = tick2ret(benchTt.Variables);
 benchRetMean = mean(benchReturns);
 benchRetRisk = std(benchReturns);
 
-%=======draw risk-return map=======
+%====draw risk-return map====
 fig2=figure('Name', 'Risk-return map');
 scatter(retRisk, retMean, 6, 'm', 'Filled');
 hold on;
@@ -49,7 +49,7 @@ grid on;
 
 
 
-%=======estimate efficient portfolios 
+%====estimate efficient portfolios====
 p = Portfolio('AssetMean', retMean, 'AssetCovar', retCov, 'AssetList',...
               timeTableSeries.Properties.VariableNames);
 p = setDefaultConstraints(p);
@@ -59,8 +59,8 @@ frontwts = estimateFrontier(p, 20);
 plot(estimRisk,estimReturn,'bo-');
 
 
-%perform PCA and then construct portfolio with a target risk equal
-%to the one of benchmark
+%====perform PCA and then construct portfolio with a target risk equal
+%to the one of benchmark====
 Weights = constructPortfolioPCA(returns, benchRetRisk);
 [pq, pr] = estimatePortMoments(p, Weights);
 figure(fig2);
