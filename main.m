@@ -1,9 +1,9 @@
 load symbols.mat
-date1 = '30-Jul-2016';
-date2 = '4-Feb-2019';
+startDate = '30-Jul-2016';
+endDate = '4-Feb-2019';
 
 
-data=fetch_data_mapped_by_tickers(symbols, date1, date2);
+data=fetch_data_mapped_by_tickers(symbols, startDate, endDate);
 timeTableSeries=extractTimeSeriesFromDataMap(data,'Close');
 
 %====calculate moments====
@@ -25,7 +25,7 @@ ax.YData=timeTableSeries.Properties.VariableNames;
 
 %====fetch bench market data (SP500 market index)====
 bench="^GSPC";
-benchData=fetch_data_mapped_by_tickers(bench, date1, date2);
+benchData=fetch_data_mapped_by_tickers(bench, startDate, endDate);
 benchTt=extractTimeSeriesFromDataMap(benchData, 'Close');
 benchReturns = tick2ret(benchTt.Variables);
 benchRetMean = mean(benchReturns);
